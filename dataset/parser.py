@@ -1,24 +1,15 @@
-from sklearn.feature_extraction.text import TfidfVectorizer
-
 from .collect_comments import CollectComments
-from .refactor import refactoring
-from .sort_dataset import sort_comments
+from .sort_dataset import do_analysis
 
 
 def processing(video_id, path_to_save_file, api_key, model_base):
-    count_idf_positive = TfidfVectorizer(ngram_range=(1, 1))
-    count_idf_negative = TfidfVectorizer(ngram_range=(1, 1))
 
     comments = CollectComments(api_key, video_id).get_comments(path_to_save_file)
-    comments_tf_idf = sort_comments(comments)
-    comments_tf_idf_base =
-
+    count_idf = do_analysis(comments)
+    comments_tf_idf = count_idf.transform(comments['Comments'])
 
     negative_proba = model_base.predict_proba(comments_tf_idf)
-    print(negative_proba)
-
-
-
-
-
+    comments['negative_proba'] = negative_proba[:, 0]
+    share_neg = (comments['negative_proba'] > 0.44).sum() / comments['Comments'].shape[0]
+    print(f'https://youtu.be/{video_id}', share_neg)
 

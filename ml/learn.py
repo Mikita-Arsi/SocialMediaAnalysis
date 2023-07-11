@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 
 def get_model_base():
 
-    all_com = pd.read_csv('train\\labeled_tweets_clean.csv', sep=',', header=None).dropna()
+    all_com = pd.read_csv('ml\\train\\labeled_tweets_clean.csv', sep=',', header=None).dropna()
     all_com.columns = ['n', 'text', 'label']
     all_com['label'] = pd.to_numeric(all_com['label'])
     train, test = train_test_split(all_com,

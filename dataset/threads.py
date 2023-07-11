@@ -1,6 +1,5 @@
 import threading
 from dataset import processing
-from const import API_KEY
 
 
 class AnalisysThread(threading.Thread):
