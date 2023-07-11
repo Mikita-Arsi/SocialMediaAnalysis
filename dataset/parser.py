@@ -10,6 +10,6 @@ def processing(video_id, path_to_save_file, api_key, model_base):
 
     negative_proba = model_base.predict_proba(comments_tf_idf)
     comments['negative_proba'] = negative_proba[:, 0]
-    share_neg = (comments['negative_proba'] > 0.44).sum() / comments['Comments'].shape[0]
-    print(f'https://youtu.be/{video_id}', share_neg)
+
+    return comments
 
