@@ -1,0 +1,2 @@
+API_KEY = "AIzaSyD1VpxAjVdX1s-hd9tsm1yK0SDNryIG9BY"
+VIDEO_ID = "oY1jlGXhoVA"
