@@ -26,7 +26,7 @@ class AnalisysThread(threading.Thread):
 
         fig.add_trace(go.Violin(
             x=res['negative_proba'],
-            name='Shulman (N = %i)' % res.shape[0],
+            name=f'{thread_num} (N = %i)' % res.shape[0],
             side='positive',
             spanmode='hard'
         ))
